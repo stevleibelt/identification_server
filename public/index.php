@@ -3,7 +3,7 @@
  * @author stev leibelt <artodeto@bazzline.net>
  * @since 2014-02-22 
  */
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Luracast\Restler\Restler;
 //use Luracast\Restler\Format\JsonFormat;
