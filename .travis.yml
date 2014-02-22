@@ -10,4 +10,4 @@ before_script:
 script: phpunit -v --colors --coverage-text
 notifications:
   email:
-    - artodeto@arcor.de
+    - artodeto@bazzline.net
