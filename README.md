@@ -1,4 +1,4 @@
-php_rest_identification
-=======================
+php_rest_identification_server
+==============================
 
-php rest application for idenfitication management
+php rest application server for idenfitication management
