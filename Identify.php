@@ -4,13 +4,10 @@
  * @since 2014-02-22 
  */
 
-namespace Net\Bazzline\Identification\Server;
-
 use Luracast\Restler\RestException;
 
 /**
  * Class Identify
- * @package Net\Bazzline\Identification\Server
  * @author stev leibelt <artodeto@bazzline.net>
  * @since 2014-02-22
  */

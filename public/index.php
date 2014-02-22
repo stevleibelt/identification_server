@@ -3,7 +3,7 @@
  * @author stev leibelt <artodeto@bazzline.net>
  * @since 2014-02-22 
  */
-require_once __DIR__ . '/../../../../../../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Luracast\Restler\Restler;
 //use Luracast\Restler\Format\JsonFormat;
@@ -20,7 +20,7 @@ $restler = new Restler();
 //$restler = new Restler(true);
 
 $restler->setAPIVersion(1);
-$restler->addAPIClass('Net\Bazzline\Identification\Server\Identify'); // repeat for more
+$restler->addAPIClass('Identify'); // repeat for more
 //$restler->addAPIClass('Resources'); //from restler framework for API Explorer
 $restler->addFilterClass('RateLimit'); //Add Filters as needed
 //$restler->setSupportedFormats('JsonFormat', 'XmlFormat');
