@@ -26,9 +26,6 @@
     },
     "autoload": {
         "psr-0": {
-            "Example\\": "examples/",
-            "Net\\Bazzline\\Identification\\Server\\": "source/",
-            "Test\\Net\\Bazzline\\Identification\\Server\\": "tests/"
         }
     }
 }
