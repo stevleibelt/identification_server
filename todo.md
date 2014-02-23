@@ -3,7 +3,9 @@
 # todo
 
 * read
-    https://github.com/Luracast/Restler/blob/master/ANNOTATIONS.md
+    * https://github.com/peej/tonic
+    * https://github.com/Respect/Rest
+    * https://github.com/Luracast/Restler/blob/master/ANNOTATIONS.md
 * return is json
 * implement payload return
 * only https allowed
