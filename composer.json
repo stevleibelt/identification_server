@@ -14,9 +14,15 @@
         }
     ],
     "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/stevleibelt/RestServer"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
-        "luracast/restler": "v3.0.0"
+        "jacwright/RestServer": "dev-master"
     },
     "require-dev": {
         "phpdocumentor/phpdocumentor": "dev-release-2.0.2",
@@ -26,6 +32,7 @@
     },
     "autoload": {
         "psr-0": {
+            "Jacwright": "vendor/stevleibelt/RestServer/source/"
         }
     }
 }
