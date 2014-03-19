@@ -20,7 +20,7 @@ class IdentifyController
     {
         //@todo validation, escaping
         $name = (string) $_GET['name'];
-        $password = (string) $_GET['name'];
+        $password = (string) $_GET['password'];
         /*
         if (strlen($name) < 1) {
             throw new RestException(400);
@@ -30,6 +30,6 @@ class IdentifyController
         }
         */
 
-        return 'name: ' . $name . PHP_EOL . 'password: ' . $password;
+        return array('name' => $name, 'password' => $password);
     }
 } 
