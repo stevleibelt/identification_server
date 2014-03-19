@@ -5,23 +5,11 @@
  */
 require_once '../vendor/autoload.php';
 
-use Luracast\Restler\Restler;
-//use Luracast\Restler\Format\JsonFormat;
-//use Luracast\Restler\Format\XmlFormat;
-use Luracast\Restler\Defaults;
+use Jacwright\RestServer\RestServer;
 
-//set the defaults to match your requirements
-Defaults::$throttle = 20; //time in milliseconds for bandwidth throttling
-Defaults::$useUrlBasedVersioning = true;
+$mode = 'debug';
+$server = new RestServer($mode);
 
-//setup restler
-$restler = new Restler();
-//production mode
-//$restler = new Restler(true);
+$server->addClass('TestController');
 
-$restler->setAPIVersion(1);
-$restler->addAPIClass('Identify'); // repeat for more
-//$restler->addAPIClass('Resources'); //from restler framework for API Explorer
-$restler->addFilterClass('RateLimit'); //Add Filters as needed
-//$restler->setSupportedFormats('JsonFormat', 'XmlFormat');
-$restler->handle(); //serve the response
+$server->handle();
