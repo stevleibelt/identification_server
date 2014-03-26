@@ -4,14 +4,14 @@
  * @since 2014-02-22 
  */
 
- namespace Application\Controller;
+namespace Application\Controller;
 
 /**
  * Class IdentifyController
  * @author stev leibelt <artodeto@bazzline.net>
  * @since 2014-02-22
  */
-class IdentifyController
+class IdentifyController extends ControllerAbstract
 {
     /**
      * @author stev leibelt <artodeto@bazzline.net>

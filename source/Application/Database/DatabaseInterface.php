@@ -4,7 +4,7 @@
  * @since 2014-03-26
  */
 
-namespace Application\Model\Database;
+namespace Application\Database;
 
 interface DatabaseInterface
 {
