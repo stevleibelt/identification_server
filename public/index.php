@@ -6,11 +6,10 @@
 require_once '../vendor/autoload.php';
 require_once '../IdentifyController.php';
 
-use Jacwright\RestServer\RestServer;
+use Luracast\Restler\Restler;
 
-$mode = 'debug';
-$server = new RestServer($mode);
+$server = new Restler();
 
-$server->addClass('IdentifyController');
+$server->addAPIClass('IdentifyController', '/');
 
 $server->handle();

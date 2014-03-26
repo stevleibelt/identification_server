@@ -22,7 +22,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "jacwright/RestServer": "dev-master"
+        "luracast/restler": "3.0.0"
     },
     "require-dev": {
         "phpdocumentor/phpdocumentor": "dev-release-2.0.2",
@@ -31,8 +31,5 @@
         "mockery/mockery": "dev-master"
     },
     "autoload": {
-        "psr-0": {
-            "Jacwright": "vendor/stevleibelt/RestServer/source/"
-        }
     }
 }
