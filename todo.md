@@ -8,6 +8,7 @@
     * https://github.com/Luracast/Restler/blob/master/ANNOTATIONS.md
 * return is json
 * implement payload return
+    * general payload return (also handling exceptions, or errors)
 * only https allowed
 * database
     * simple text file

@@ -7,6 +7,7 @@
 namespace Application\Controller;
 
 use Application\Database\FileDatabase;
+use Application\Database\Query;
 
 abstract class ControllerAbstract
 {
@@ -17,7 +18,7 @@ abstract class ControllerAbstract
 
     public function __construct()
     {
-        $pathToDatabase = '../../../configuration/database.php';
+        $pathToDatabase = realpath(__DIR__ . '/../../../configuration/database.php');
 
         if (is_readable($pathToDatabase)) {
             $data = require_once $pathToDatabase;
@@ -26,5 +27,10 @@ abstract class ControllerAbstract
         }
 
         $this->database = new FileDatabase($data);
+    }
+
+    protected function getDatabaseQuery()
+    {
+        return new Query();
     }
 }

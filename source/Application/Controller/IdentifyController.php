@@ -28,7 +28,12 @@ class IdentifyController extends ControllerAbstract
             throw new RestException(400);
         }
         */
+        $query = $this->getDatabaseQuery();
+        $query->setName($name);
+        $query->setPassword($password);
 
-        return array('name' => $name, 'password' => $password);
+        $isValid = $this->database->get($query);
+
+        return array('statuscode' => 0, 'statusmessage' => 'ok', 'payload' => array('isValid' => $isValid));
     }
 } 
