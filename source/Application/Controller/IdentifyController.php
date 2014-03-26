@@ -14,15 +14,12 @@
 class IdentifyController
 {
     /**
-     * @url GET /
      * @author stev leibelt <artodeto@bazzline.net>
      * @since 2014-02-22
      */
-    public function user()
+    public function get($name = '', $password = '')
     {
         //@todo validation, escaping
-        $name = (string) $_GET['name'];
-        $password = (string) $_GET['password'];
         /*
         if (strlen($name) < 1) {
             throw new RestException(400);
