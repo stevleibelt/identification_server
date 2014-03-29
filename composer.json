@@ -22,6 +22,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
+        "propel/propel1": "1.7.1",
         "luracast/restler": "3.0.0"
     },
     "require-dev": {
