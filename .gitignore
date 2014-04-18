@@ -1,5 +1,6 @@
-configuration/*.php
-vendor/
+.idea
+configuration/propel/runtime-conf.xml
+configuration/propel/*-conf.php
 composer.lock
 phpunit.xml
-.idea
+vendor/
