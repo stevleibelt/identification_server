@@ -14,12 +14,6 @@
         }
     ],
     "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/stevleibelt/RestServer"
-        }
-    ],
     "require": {
         "php": ">=5.3.3",
         "propel/propel1": "1.7.1",
@@ -33,7 +27,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Application": "source/"
+            "Controller": "application/",
+            "Database": "application/"
         }
     }
 }

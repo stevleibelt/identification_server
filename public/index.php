@@ -9,6 +9,6 @@ use Luracast\Restler\Restler;
 
 $server = new Restler();
 
-$server->addAPIClass('Application\Controller\IdentifyController', '/');
+$server->addAPIClass('Controller\IdentifyController', '/');
 
 $server->handle();

@@ -4,7 +4,7 @@
  * @since 2014-02-22 
  */
 
-namespace Application\Controller;
+namespace Controller;
 
 /**
  * Class IdentifyController

@@ -21,3 +21,4 @@
 * secure against attacks
     * http://restler3.luracast.com/examples/_009_rate_limiting/readme.html
 * implement client/server encryption (to prevent man in the middle attack), if needed (read about ssl attack vectors)
+* implement setup script (create database and so one)

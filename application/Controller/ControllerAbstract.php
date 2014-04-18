@@ -4,10 +4,10 @@
  * @since 2014-03-26
  */
 
-namespace Application\Controller;
+namespace Controller;
 
-use Application\Database\FileDatabase;
-use Application\Database\Query;
+use Database\FileDatabase;
+use Database\Query;
 
 abstract class ControllerAbstract
 {
