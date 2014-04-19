@@ -12,8 +12,8 @@ This will redirect all http requests to https.
 
 # Milestones
 
-* 0.0.1 -   hello world with rest api
-* 0.0.2 -   simple validation if email address and password is valid
+~~* 0.0.1 -   hello world with rest api~~
+~~* 0.0.2 -   simple validation if identity and password is valid~~
 * 0.1.0 -   basic html form to insert/update/delete identities
 * 0.2.0 -   support for application based identification validation (secured by token)
 * 0.3.0 -   dynamically token updates with application
@@ -61,3 +61,17 @@ This will redirect all http requests to https.
 * [Mozilla Persona Cookbook - github.com](https://github.com/mozilla/browserid-cookbook/tree/master/php)
 * [X.1252 - recommendation for identity management](http://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.1252)
 * [Identification Management - de.wikipedia.org](http://de.wikipedia.org/wiki/Identit%C3%A4tsmanagement)
+
+# History
+
+* [0.0.1](https://github.com/stevleibelt/identification_server/tree/0.0.1) - released at 2014-03-20
+    * basic api is working
+    * rest api is created by using [rest server](https://github.com/stevleibelt/RestServer)
+* [0.0.2](https://github.com/stevleibelt/identification_server/tree/0.0.2) - released at 2014-04-20
+    * file database is working
+    * dbms is prepared
+    * basic directory structure looks stable
+    * added script "[generate-hash](https://github.com/stevleibelt/identification_server/blob/master/script/generate-hash.php)" to easy up password hashing
+    * created [Service\Factory](https://github.com/stevleibelt/identification_server/blob/master/application/Service/Factory) section
+    * created [Model](https://github.com/stevleibelt/identification_server/blob/master/application/Model) section
+    * cleaned [data](https://github.com/stevleibelt/identification_server/blob/master/data) section
