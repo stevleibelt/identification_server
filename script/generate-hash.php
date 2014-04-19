@@ -12,13 +12,13 @@ if ($isNotCalledFromCommandLineInterface) {
     exit(1);
 }
 
-$hasValidNumberOfArguments = (in_array($argc, array(2, 3)));
+$hasValidNumberOfArguments = ($argc === 2);
 $argumentsAreValid = ($hasValidNumberOfArguments
     && (strlen(trim($argv[1])) > 0));
 
 if (!$argumentsAreValid) {
     $usageMessage = 'No or invalid arguments supplied.' . PHP_EOL .
-        'Usage: ' . basename(__FILE__) . ' <string> [<salt>]';
+        'Usage: ' . basename(__FILE__) . ' <string>';
 
     echo $usageMessage . PHP_EOL;
     exit(1);
@@ -26,7 +26,9 @@ if (!$argumentsAreValid) {
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$salt = (isset($argv[2])) ? $argv[2] : '';
+$filePathToSalt = __DIR__ . '/../data/dynamic/salt.php';
+
+$salt = (is_readable($filePathToSalt)) ? require_once $filePathToSalt : '';
 $string = $argv[1];
 
 $hasher = new \Model\Hasher($salt);
