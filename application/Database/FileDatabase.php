@@ -6,31 +6,39 @@
 
 namespace Database;
 
+use Model\Identity;
+
 /**
  * Class FileDatabase
  * @package Database
  */
-class FileDatabase implements DatabaseInterface
+class FileDatabase extends AbstractDatabase
 {
+    /** @var array */
     private $data;
 
+    /**
+     * @param array $data
+     */
     public function __construct(array $data)
     {
         $this->data = $data;
     }
 
     /**
-     * @param Query $query
-     * @return bool
+     * @param string $name
+     * @return null|Identity
      */
-    public function get(Query $query)
+    protected function getIdentityByName($name)
     {
-        if ($query->hasName()
-            && $query->hasPassword()) {
-            return ((isset($this->data[$query->getName()]))
-                && ($this->data[$query->getName()] === $query->getPassword()));
-        } else {
-            return false;
+        $identity = null;
+
+        if (isset($this->data[trim($name)])) {
+            $identity = $this->identityFactory->create();
+            $identity->setName($name);
+            $identity->setPassword($this->data[trim($name)]);
         }
+
+        return $identity;
     }
 }

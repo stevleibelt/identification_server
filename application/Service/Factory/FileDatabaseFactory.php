@@ -19,14 +19,13 @@ class FileDatabaseFactory implements FactoryInterface
      */
     public function create()
     {
-        $pathToDatabase = realpath(__DIR__ . '/../../../configuration/database.php');
+        $pathToDatabase = realpath(__DIR__ . '/../../../data/dynamic/database.php');
+        $data = (is_readable($pathToDatabase)) ? require_once $pathToDatabase : array();
+        $hasherFactory = new HasherFactory();
 
-        if (is_readable($pathToDatabase)) {
-            $data = require_once $pathToDatabase;
-        } else {
-            $data = array();
-        }
+        $database = new FileDatabase($data);
+        $database->setHasher($hasherFactory->create());
 
-        return new FileDatabase($data);
+        return $database;
     }
 }

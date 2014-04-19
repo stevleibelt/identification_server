@@ -14,10 +14,11 @@ use Database\Query;
 use Service\Factory\FileDatabaseFactory;
 
 /**
- * Class ControllerAbstract
+ * Acts as application
+ * Class AbstractController
  * @package Controller
  */
-abstract class ControllerAbstract
+abstract class AbstractController
 {
     /** @var DatabaseInterface */
     private $database;

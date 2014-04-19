@@ -10,7 +10,7 @@ namespace Controller;
  * Class IdentifyController
  * @package Controller
  */
-class IdentifyController extends ControllerAbstract
+class IdentifyController extends AbstractController
 {
     /**
      * @author stev leibelt <artodeto@bazzline.net>
@@ -31,7 +31,7 @@ class IdentifyController extends ControllerAbstract
         $query->setName($name);
         $query->setPassword($password);
 
-        $isValid = $this->getDatabase()->get($query);
+        $isValid = $this->getDatabase()->isValid($query);
 
         return $this->getResponse(0, 'ok', array('isValid' => $isValid))->toArray();
     }
