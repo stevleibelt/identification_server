@@ -12,8 +12,8 @@ This will redirect all http requests to https.
 
 # Milestones
 
-~~* 0.0.1 -   hello world with rest api~~
-~~* 0.0.2 -   simple validation if identity and password is valid~~
+* ~~0.0.1 -   hello world with rest api~~
+* ~~0.0.2 -   simple validation if identity and password is valid~~
 * 0.1.0 -   basic html form to insert/update/delete identities
 * 0.2.0 -   support for application based identification validation (secured by token)
 * 0.3.0 -   dynamically token updates with application
