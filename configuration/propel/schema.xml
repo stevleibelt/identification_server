@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- http://www.propelorm.org/reference/schema.html -->
 <!-- http://www.propelorm.org/documentation/02-buildtime.html -->
-<database name="netBazzlineMediaLibrary" defaultIdMethod="native" namespace="Database">
+<database name="netBazzlineIdentificationServer" defaultIdMethod="native" namespace="Application\Database\DBMS">
     <!-- user management -->
 	<table	name="identities" phpName="Identity">
 		<column name="id" primaryKey="true" type="char"	size="36" required="true" />
