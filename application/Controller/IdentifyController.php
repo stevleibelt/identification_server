@@ -31,7 +31,7 @@ class IdentifyController extends ControllerAbstract
         $query->setName($name);
         $query->setPassword($password);
 
-        $isValid = $this->database->get($query);
+        $isValid = $this->getDatabase()->get($query);
 
         return $this->getResponse(0, 'ok', array('isValid' => $isValid))->toArray();
     }

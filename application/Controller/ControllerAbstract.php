@@ -9,8 +9,9 @@ namespace Controller;
 use Model\Payload;
 use Model\Response;
 use Model\Status;
-use Database\FileDatabase;
+use Database\DatabaseInterface;
 use Database\Query;
+use Service\Factory\FileDatabaseFactory;
 
 /**
  * Class ControllerAbstract
@@ -18,22 +19,20 @@ use Database\Query;
  */
 abstract class ControllerAbstract
 {
+    /** @var DatabaseInterface */
+    private $database;
+
     /**
-     * @type \Database\DatabaseInterface
+     * @return DatabaseInterface
      */
-    protected $database;
-
-    public function __construct()
+    protected function getDatabase()
     {
-        $pathToDatabase = realpath(__DIR__ . '/../../../configuration/database.php');
-
-        if (is_readable($pathToDatabase)) {
-            $data = require_once $pathToDatabase;
-        } else {
-            $data = array();
+        if (!$this->database instanceof DatabaseInterface) {
+            $factory = new FileDatabaseFactory();
+            $this->database = $factory->create();
         }
 
-        $this->database = new FileDatabase($data);
+        return $this->database;
     }
 
     /**
