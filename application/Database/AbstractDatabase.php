@@ -34,7 +34,7 @@ abstract class AbstractDatabase implements DatabaseInterface
             $identity = $this->getIdentityByName($query->getName());
 
             if ($identity instanceof Identity) {
-                $isValid = ($query->getPassword() === $identity->getPassword());
+                $isValid = ($this->hasher->hash($query->getPassword()) === $identity->getPassword());
             }
         }
 
