@@ -33,6 +33,6 @@ class IdentifyController extends ControllerAbstract
 
         $isValid = $this->database->get($query);
 
-        return array('statuscode' => 0, 'statusmessage' => 'ok', 'payload' => array('isValid' => $isValid));
+        return $this->getResponse(0, 'ok', array('isValid' => $isValid))->toArray();
     }
 } 

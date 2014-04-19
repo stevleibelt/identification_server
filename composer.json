@@ -28,7 +28,8 @@
     "autoload": {
         "psr-0": {
             "Controller": "application/",
-            "Database": "application/"
+            "Database": "application/",
+            "Model": "application/"
         }
     }
 }

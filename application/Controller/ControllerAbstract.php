@@ -6,6 +6,9 @@
 
 namespace Controller;
 
+use Model\Payload;
+use Model\Response;
+use Model\Status;
 use Database\FileDatabase;
 use Database\Query;
 
@@ -39,5 +42,28 @@ abstract class ControllerAbstract
     protected function getDatabaseQuery()
     {
         return new Query();
+    }
+
+    /**
+     * @param int $statusCode
+     * @param string $statusMessage
+     * @param array $payloadContent
+     * @return Response
+     */
+    protected function getResponse($statusCode, $statusMessage, array $payloadContent)
+    {
+        $payload = new Payload();
+        $response = new Response();
+        $status = new Status();
+
+        $payload->setContent($payloadContent);
+
+        $status->setCode($statusCode);
+        $status->setMessage($statusMessage);
+
+        $response->setPayload($payload);
+        $response->setStatus($status);
+
+        return $response;
     }
 }
