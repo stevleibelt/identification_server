@@ -1,6 +1,6 @@
 # REST Identification Server
 
-php rest application server for idenfitication management
+This project will provide a php based identification management with an rest api.
 
 # Security Hints
 
@@ -9,6 +9,26 @@ This will redirect all http requests to https.
 
     RewriteCond   %{SERVER_PORT}  !^443$
     RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+# Milestones
+
+* 0.0.1 -   hello world with rest api
+* 0.0.2 -   support dbms and file based database (simple, plain arrays)
+* 0.1.0 -   simple validation if email address and password is valid
+* 0.2.0 -   basic html form to insert/update/delete identities
+* 0.3.0 -   support for application based identification validation (secured by token)
+* 0.4.0 -   dynamically token updates with application
+* 0.5.0 -   applications can have a "valid until" date
+* 0.6.0 -   basic html administration backend
+* 0.7.0 -   provide scripts to setup application
+* 0.8.0 -   everything is shaped up in a restfull way
+* 0.9.0 -   everything is up and working
+* 1.0.0 -   first release, tests are running, documentation is available, api is stable
+
+# Future Plans
+
+* provide database switch scripts (from dbms to file and vice versa)
+* manage multiple identities (prepared datasets that the identification server can deliver to allowed applications to speed up user account setup, like username, email-address, whatever you want to share)
 
 # Thanks
 
