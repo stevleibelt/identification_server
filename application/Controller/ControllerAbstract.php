@@ -9,10 +9,14 @@ namespace Controller;
 use Database\FileDatabase;
 use Database\Query;
 
+/**
+ * Class ControllerAbstract
+ * @package Controller
+ */
 abstract class ControllerAbstract
 {
     /**
-     * @type \Application\Database\DatabaseInterface
+     * @type \Database\DatabaseInterface
      */
     protected $database;
 
@@ -29,6 +33,9 @@ abstract class ControllerAbstract
         $this->database = new FileDatabase($data);
     }
 
+    /**
+     * @return Query
+     */
     protected function getDatabaseQuery()
     {
         return new Query();

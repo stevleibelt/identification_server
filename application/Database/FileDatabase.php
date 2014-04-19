@@ -4,8 +4,12 @@
  * @since 2014-03-26
  */
 
-namespace Application\Database;
+namespace Database;
 
+/**
+ * Class FileDatabase
+ * @package Database
+ */
 class FileDatabase implements DatabaseInterface
 {
     private $data;
@@ -15,6 +19,10 @@ class FileDatabase implements DatabaseInterface
         $this->data = $data;
     }
 
+    /**
+     * @param Query $query
+     * @return bool
+     */
     public function get(Query $query)
     {
         if ($query->hasName()

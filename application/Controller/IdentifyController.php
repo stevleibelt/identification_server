@@ -8,8 +8,7 @@ namespace Controller;
 
 /**
  * Class IdentifyController
- * @author stev leibelt <artodeto@bazzline.net>
- * @since 2014-02-22
+ * @package Controller
  */
 class IdentifyController extends ControllerAbstract
 {

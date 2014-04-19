@@ -4,9 +4,17 @@
  * @since 2014-03-26
  */
 
-namespace Application\Database;
+namespace Database;
 
+/**
+ * Interface DatabaseInterface
+ * @package Database
+ */
 interface DatabaseInterface
 {
+    /**
+     * @param Query $query
+     * @return bool
+     */
     public function get(Query $query);
 }
