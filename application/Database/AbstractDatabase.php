@@ -58,12 +58,6 @@ abstract class AbstractDatabase implements DatabaseInterface
     }
 
     /**
-     * @param string $name
-     * @return null|Identity
-     */
-    abstract protected function getIdentityByName($name);
-
-    /**
      * @param Query $query
      * @return bool
      */

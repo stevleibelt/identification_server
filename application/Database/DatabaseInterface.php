@@ -7,6 +7,7 @@
 namespace Database;
 
 use Model\Hasher;
+use Model\Identity;
 use Service\Factory\IdentityFactory;
 
 /**
@@ -30,4 +31,10 @@ interface DatabaseInterface
      * @param IdentityFactory $factory
      */
     public function setIdentityFactory(IdentityFactory $factory);
+
+    /**
+     * @param string $name
+     * @return null|Identity
+     */
+    public function getIdentityByName($name);
 }

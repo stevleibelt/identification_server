@@ -29,7 +29,7 @@ class FileDatabase extends AbstractDatabase
      * @param string $name
      * @return null|Identity
      */
-    protected function getIdentityByName($name)
+    public function getIdentityByName($name)
     {
         $identity = null;
 
