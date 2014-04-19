@@ -18,21 +18,18 @@ class IdentifyController extends AbstractController
      */
     public function get($name = '', $password = '')
     {
-        //@todo validation, escaping
-        /*
-        if (strlen($name) < 1) {
-            throw new RestException(400);
-        }
-        if (strlen($password) < 1) {
-            throw new RestException(400);
-        }
-        */
-        $query = $this->getDatabaseQuery();
-        $query->setName($name);
-        $query->setPassword($password);
+        if ($this->isValidString($name)
+            && ($this->isValidString($password))) {
+            $query = $this->getDatabaseQuery();
+            $query->setName($name);
+            $query->setPassword($password);
 
-        $isValid = $this->getDatabase()->isValid($query);
+            $isValid = $this->getDatabase()->isValid($query);
+            $response = $this->getResponse(0, 'ok', array('isValid' => $isValid))->toArray();
+        } else {
+            $response = $this->getResponse(1, 'error', array('no or invalid arguments provided' => 'Usage: ?name=<name>&password=<password>'))->toArray();
+        }
 
-        return $this->getResponse(0, 'ok', array('isValid' => $isValid))->toArray();
+        return $response;
     }
 } 

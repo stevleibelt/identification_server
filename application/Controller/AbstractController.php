@@ -66,4 +66,14 @@ abstract class AbstractController
 
         return $response;
     }
+
+    /**
+     * @param $string
+     * @return bool
+     */
+    protected function isValidString($string)
+    {
+        return (($string === (string) $string)
+            && (strlen($string) > 0));
+    }
 }
