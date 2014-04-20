@@ -33,6 +33,7 @@ interface DatabaseInterface
     public function setIdentityFactory(IdentityFactory $factory);
 
     /**
+     * @todo remove ByName and replace name with query
      * @param string $name
      * @return null|Identity
      */

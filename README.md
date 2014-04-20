@@ -2,6 +2,10 @@
 
 This project will provide a php based identification management with an rest api.
 
+# Usage
+
+Simple call "<your_host>/identify?name=<identity_name>&password=<password>" and process json response.
+
 # Security Hints
 
 Add following to lines after 'RewriteEngine On' in your 'public/.htaccess'.

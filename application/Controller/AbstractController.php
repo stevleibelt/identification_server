@@ -45,12 +45,12 @@ abstract class AbstractController
     }
 
     /**
+     * @param array $payloadContent
      * @param int $statusCode
      * @param string $statusMessage
-     * @param array $payloadContent
      * @return Response
      */
-    protected function getResponse($statusCode, $statusMessage, array $payloadContent)
+    protected function getResponse(array $payloadContent, $statusCode = 0, $statusMessage = 'ok')
     {
         $payload = new Payload();
         $response = new Response();
@@ -65,6 +65,15 @@ abstract class AbstractController
         $response->setStatus($status);
 
         return $response;
+    }
+
+    /**
+     * @param array $payloadContent
+     * @return Response
+     */
+    protected function getErrorResponse(array $payloadContent)
+    {
+        return $this->getResponse($payloadContent, 1, 'error');
     }
 
     /**

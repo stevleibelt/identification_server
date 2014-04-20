@@ -25,9 +25,9 @@ class IdentifyController extends AbstractController
             $query->setPassword($password);
 
             $isValid = $this->getDatabase()->isValid($query);
-            $response = $this->getResponse(0, 'ok', array('isValid' => $isValid))->toArray();
+            $response = $this->getResponse(array('isValid' => $isValid))->toArray();
         } else {
-            $response = $this->getResponse(1, 'error', array('no or invalid arguments provided' => 'Usage: ?name=<name>&password=<password>'))->toArray();
+            $response = $this->getErrorResponse(array('no or invalid arguments provided' => 'Usage: identify?name=<name>&password=<password>'))->toArray();
         }
 
         return $response;
