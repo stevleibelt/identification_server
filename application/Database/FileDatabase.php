@@ -32,11 +32,13 @@ class FileDatabase extends AbstractDatabase
     public function getIdentityByName($name)
     {
         $identity = null;
+        $key = trim($name);
 
-        if (isset($this->data[trim($name)])) {
+        if (isset($this->data[$key])) {
             $identity = $this->identityFactory->create();
-            $identity->setName($name);
-            $identity->setPassword($this->data[trim($name)]);
+            $identity->setName($key);
+            $identity->setPassword($this->data[$key]['password']);
+            $identity->setValidUntil($this->data[$key]['valid_until']);
         }
 
         return $identity;

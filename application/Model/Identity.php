@@ -18,6 +18,9 @@ class Identity
     /** @var string */
     private $password;
 
+    /** @var int */
+    private $validUntil;
+
     /**
      * @param string $name
      */
@@ -48,5 +51,21 @@ class Identity
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * @param int $validUntil
+     */
+    public function setValidUntil($validUntil)
+    {
+        $this->validUntil = (int) $validUntil;
+    }
+
+    /**
+     * @return int
+     */
+    public function getValidUntil()
+    {
+        return $this->validUntil;
     }
 }

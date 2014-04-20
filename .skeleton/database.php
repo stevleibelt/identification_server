@@ -4,7 +4,9 @@
 * @since 2014-04-20
 */
 
-//name => password //use ./script/generate-hash.php to generate hashed name and password
 return array(
-    'foo' => 'bar'
+    'foo' => array(
+        'password' => 'bar',                //use ./script/generate-hash.php to generate hashed name and password
+        'valid_until' => '2040-07-13'       //use ./script/generate-timestamp.php to generate timestamp from date
+    )
 );
