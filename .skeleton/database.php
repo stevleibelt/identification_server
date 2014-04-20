@@ -4,7 +4,7 @@
 * @since 2014-04-20
 */
 
-//username => password //use ./script/generate-hash.php to generate a password
+//identity => password //use ./script/generate-hash.php to generate hashed identity and password
 return array(
     'foo' => 'bar'
 );
