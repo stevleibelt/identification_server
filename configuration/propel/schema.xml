@@ -5,7 +5,7 @@
     <!-- user management -->
 	<table	name="identities" phpName="Identity">
 		<column name="id" primaryKey="true" type="char"	size="36" required="true" />
-		<column name="login" type="varchar" size="40" required="true" />
+		<column name="name" type="varchar" size="40" required="true" />
 		<column name="password" type="char" size="40" required="true" />
 		<column name="user_id" type="char"	size="36" required="true" />
         <column name="created_at" type="DATE" size="40" required="true" />

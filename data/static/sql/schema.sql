@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS net_bazzline_identification_service_identities;
 CREATE TABLE net_bazzline_identification_service_identities
 (
     id CHAR(36) NOT NULL,
-    login VARCHAR(40) NOT NULL,
+    name VARCHAR(40) NOT NULL,
     password CHAR(40) NOT NULL,
     user_id CHAR(36) NOT NULL,
     created_at DATE(40) NOT NULL,
