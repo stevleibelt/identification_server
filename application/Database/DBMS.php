@@ -16,7 +16,7 @@ class DBMS implements DatabaseInterface
      * @param Query $query
      * @return bool
      */
-    public function isValid(Query $query)
+    public function validateAuthorization(Query $query)
     {
         // TODO: Implement get() method.
     }

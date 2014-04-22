@@ -12,11 +12,38 @@ namespace Database;
  */
 class Query
 {
+    /** @var int|string */
+    private $id;
+
     /** @var string */
     private $name;
 
     /** @var string */
     private $password;
+
+    /**
+     * @param int|string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int|string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasId()
+    {
+        return (!is_null($this->id));
+    }
 
     /**
      * @return null|string
@@ -55,7 +82,7 @@ class Query
      */
     public function setName($value)
     {
-        $this->name = (string) $value;
+        $this->name = trim($value);
     }
 
     /**
@@ -63,6 +90,6 @@ class Query
      */
     public function setPassword($value)
     {
-        $this->password = (string) $value;
+        $this->password = trim($value);
     }
 }

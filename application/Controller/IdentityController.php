@@ -9,7 +9,7 @@ namespace Controller;
 use Model\Identity;
 use Exception;
 use InvalidArgumentException;
-use Model\Response;
+use Luracast\Restler\RestException;
 
 /**
  * Class IdentityController
@@ -17,51 +17,43 @@ use Model\Response;
  */
 class IdentityController extends AbstractController
 {
-    /*
     public function index()
     {
         //@todo move identify get into index
         return $this->getResponse(array('you have to provide a valid name and password combination'))->toArray();
     }
-    */
+
     /**
      * @param string $name
      * @param string $password
-     * @return array|null
+     * @return array
+     * @throws \Luracast\Restler\RestException
      */
-    public function get($name, $password)
+    public function get($name = '', $password = '')
     {
         $response = null;
 
         try {
-            if ($this->isValidString($name)
-                && ($this->isValidString($password))) {
-                $query = $this->getDatabaseQuery();
-                $query->setName($name);
-                $query->setPassword($password);
+            $this->validateString($name);
+            $this->validateString($password);
 
-                if ($this->getDatabase()->isValid($query)) {
-                    $identity = $this->getDatabase()->getIdentityByName($name);
-                    if ($identity instanceof Identity) {
-                        $response = $this->getResponse(
-                            array(
-                                'name' => $identity->getName(),
-                                'password' => $identity->getPassword(),
-                                'validUntil' => $identity->getValidUntil()
-                            )
-                        )->toArray();
-                    }
-                }
+            $query = $this->getDatabaseQuery();
+            $query->setName($name);
+            $query->setPassword($password);
+
+            $database = $this->getDatabase();
+            $database->validateAuthorization($query);
+            $identity = $database->getIdentity($query);
+            if ($identity instanceof Identity) {
+                $response = $this->getResponse($identity->toArray());
             }
-            if (!$response instanceof Response) {
-                throw new InvalidArgumentException('invalid name or password provided');
-            }
-        } catch (Exception $exception) {
-            //@todo implement logging if needed
-            $response = $this->getErrorResponse(array($exception->getMessage()))->toArray();
+        } catch (\InvalidArgumentException $exception) {
+            throw new RestException(401, 'no or invalid arguments provided');
+        } catch (\Exception $exception) {
+            throw new RestException(500, 'something unexpected happened');
         }
 
-        return $response;
+        return $response->toArray();
     }
 
     public function put($name, $password, $validUntil)

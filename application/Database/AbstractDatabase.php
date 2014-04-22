@@ -24,22 +24,19 @@ abstract class AbstractDatabase implements DatabaseInterface
 
     /**
      * @param Query $query
-     * @return bool
+     * @throws \InvalidArgumentException
      */
-    public function isValid(Query $query)
+    public function validateAuthorization(Query $query)
     {
-        $isValid = false;
+        $this->validateQuery($query);
+        $identity = $this->getIdentity($query);
 
-        if ($this->isValidQuery($query)) {
-            $identity = $this->getIdentityByName($this->hasher->hash($query->getName()));
-
-            if ($identity instanceof Identity) {
-                $isValid = (($this->hasher->hash($query->getPassword()) === $identity->getPassword())
-                            && ($identity->getValidUntil() >= time()));
-            }
+        if (($identity instanceof Identity)
+            && ($this->hasher->hash($query->getPassword()) === $identity->getHashedPassword())
+            && ($identity->getValidUntil() >= time())) {
+        } else {
+            throw new \InvalidArgumentException('unknown identity or wrong name/password combination');
         }
-
-        return $isValid;
     }
 
     /**
@@ -60,10 +57,13 @@ abstract class AbstractDatabase implements DatabaseInterface
 
     /**
      * @param Query $query
-     * @return bool
+     * @throws \InvalidArgumentException
      */
-    protected function isValidQuery(Query $query)
+    protected function validateQuery(Query $query)
     {
-        return ($query->hasName() && $query->hasPassword());
+        if (!($query->hasId()
+            || ($query->hasName() && $query->hasPassword()))) {
+            throw new \InvalidArgumentException('query is not valid');
+        }
     }
 } 

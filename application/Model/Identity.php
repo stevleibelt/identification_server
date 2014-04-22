@@ -10,16 +10,43 @@ namespace Model;
  * Class Identity
  * @package Model
  */
-class Identity
+class Identity implements ArrayAbleInterface
 {
+    /** @var int|string */
+    private $id;
+
     /** @var string */
     private $name;
 
     /** @var string */
-    private $password;
+    private $hashedPassword;
 
     /** @var int */
     private $validUntil;
+
+    /**
+     * @return bool
+     */
+    public function hasId()
+    {
+        return (!is_null($this->id));
+    }
+
+    /**
+     * @param int|string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int|string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @param string $name
@@ -40,17 +67,17 @@ class Identity
     /**
      * @param string $password
      */
-    public function setPassword($password)
+    public function setHashedPassword($password)
     {
-        $this->password = trim((string) $password);
+        $this->hashedPassword = trim((string) $password);
     }
 
     /**
      * @return string
      */
-    public function getPassword()
+    public function getHashedPassword()
     {
-        return $this->password;
+        return $this->hashedPassword;
     }
 
     /**
@@ -67,5 +94,16 @@ class Identity
     public function getValidUntil()
     {
         return $this->validUntil;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return array(
+            'name'          => $this->name,
+            'validUntil'    => $this->validUntil
+        );
     }
 }

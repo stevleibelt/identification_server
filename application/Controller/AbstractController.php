@@ -78,11 +78,13 @@ abstract class AbstractController
 
     /**
      * @param $string
-     * @return bool
+     * @throws \InvalidArgumentException
      */
-    protected function isValidString($string)
+    protected function validateString($string)
     {
-        return (($string === (string) $string)
-            && (strlen($string) > 0));
+        if(($string !== (string) $string)
+            || (strlen($string) === 0)) {
+            throw new \InvalidArgumentException('"' . $string . '" is not valid string given');
+        }
     }
 }

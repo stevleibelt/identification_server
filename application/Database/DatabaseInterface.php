@@ -18,9 +18,9 @@ interface DatabaseInterface
 {
     /**
      * @param Query $query
-     * @return bool
+     * @throws \InvalidArgumentException
      */
-    public function isValid(Query $query);
+    public function validateAuthorization(Query $query);
 
     /**
      * @param Hasher $hasher
@@ -33,9 +33,8 @@ interface DatabaseInterface
     public function setIdentityFactory(IdentityFactory $factory);
 
     /**
-     * @todo remove ByName and replace name with query
-     * @param string $name
+     * @param Query $query
      * @return null|Identity
      */
-    public function getIdentityByName($name);
+    public function getIdentity(Query $query);
 }

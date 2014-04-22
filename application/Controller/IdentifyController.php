@@ -6,6 +6,8 @@
 
 namespace Controller;
 
+use Luracast\Restler\RestException;
+
 /**
  * Class IdentifyController
  * @package Controller
@@ -18,16 +20,21 @@ class IdentifyController extends AbstractController
      */
     public function get($name = '', $password = '')
     {
-        if ($this->isValidString($name)
-            && ($this->isValidString($password))) {
+        try {
+            $this->validateString($name);
+            $this->validateString($password);
+
             $query = $this->getDatabaseQuery();
             $query->setName($name);
             $query->setPassword($password);
 
-            $isValid = $this->getDatabase()->isValid($query);
-            $response = $this->getResponse(array('isValid' => $isValid))->toArray();
-        } else {
-            $response = $this->getErrorResponse(array('no or invalid arguments provided' => 'Usage: identify?name=<name>&password=<password>'))->toArray();
+            $database = $this->getDatabase();
+            $database->validateAuthorization($query);
+            $response = $this->getResponse(array())->toArray();
+        } catch (\InvalidArgumentException $exception) {
+            throw new RestException(401, 'no or invalid arguments provided');
+        } catch (\Exception $exception) {
+            throw new RestException(500, 'something unexpected happened');
         }
 
         return $response;

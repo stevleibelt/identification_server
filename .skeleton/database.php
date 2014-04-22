@@ -5,8 +5,9 @@
 */
 
 return array(
-    'foo' => array(
-        'password' => 'bar',                //use ./script/generate-hash.php to generate hashed name and password
-        'valid_until' => '2040-07-13'       //use ./script/generate-timestamp.php to generate timestamp from date
+    array(
+        'hashed_name'   => 'foo',               //use ./script/generate-hash.php to generate hashed name
+        'hashedPassword'      => 'bar',               //use ./script/generate-hash.php to generate hashed hashedPassword
+        'valid_until'   => '2040-07-13'         //use ./script/generate-timestamp.php to generate timestamp from date
     )
 );

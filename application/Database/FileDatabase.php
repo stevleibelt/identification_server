@@ -26,20 +26,36 @@ class FileDatabase extends AbstractDatabase
     }
 
     /**
-     * @param string $name
+     * @param Query $query
      * @return null|Identity
+     * @throws \InvalidArgumentException
      */
-    public function getIdentityByName($name)
+    public function getIdentity(Query $query)
     {
+        $this->validateQuery($query);
         $identity = null;
-        $key = trim($name);
+        $hashedName = $this->hasher->hash($query->getName());
 
-        if (isset($this->data[$key])) {
-            $identity = $this->identityFactory->create();
-            $identity->setName($key);
-            $identity->setPassword($this->data[$key]['password']);
-            $identity->setValidUntil($this->data[$key]['valid_until']);
+        foreach ($this->data as $key => $values) {
+            if ($values['hashed_name'] === $hashedName) {
+                $values['id'] = $key;
+                $values['name'] = $query->getName();
+                $identity = $this->createIdentity($values);
+                break;
+            }
         }
+
+        return $identity;
+    }
+
+    private function createIdentity(array $values)
+    {
+        $identity = $this->identityFactory->create();
+
+        $identity->setId($values['id']);
+        $identity->setName($values['name']);
+        $identity->setHashedPassword($values['hashedPassword']);
+        $identity->setValidUntil($values['valid_until']);
 
         return $identity;
     }
