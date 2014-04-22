@@ -19,7 +19,7 @@ This will redirect all http requests to https.
 * ~~0.0.1 -   hello world with rest api~~
 * ~~0.0.2 -   simple validation if identity and password is valid~~
 * 0.1.0 -   basic html form to insert/update/delete identities
-* 0.1.1 -   update status in payload, write something like restler provides to indicate an error (example: ""error": {"code": 404, "message": "Not Found"}")
+* 0.1.1 -   update response usage (since we are using RestException, it does not make sense to have a status/statuscode/payload section, or?)
 * 0.2.0 -   support for application based identification validation (secured by token)
 * 0.3.0 -   dynamically token updates with application
 * 0.4.0 -   applications can have a "valid until" date

@@ -68,15 +68,6 @@ abstract class AbstractController
     }
 
     /**
-     * @param array $payloadContent
-     * @return Response
-     */
-    protected function getErrorResponse(array $payloadContent)
-    {
-        return $this->getResponse($payloadContent, 1, 'error');
-    }
-
-    /**
      * @param $string
      * @throws \InvalidArgumentException
      */
