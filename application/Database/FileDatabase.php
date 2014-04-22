@@ -54,7 +54,7 @@ class FileDatabase extends AbstractDatabase
 
         $identity->setId($values['id']);
         $identity->setName($values['name']);
-        $identity->setHashedPassword($values['hashedPassword']);
+        $identity->setHashedPassword($values['hashed_password']);
         $identity->setValidUntil($values['valid_until']);
 
         return $identity;

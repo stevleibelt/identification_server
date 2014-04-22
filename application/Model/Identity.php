@@ -12,17 +12,52 @@ namespace Model;
  */
 class Identity implements ArrayAbleInterface
 {
+    /** @var string */
+    private $hashedName;
+
+    /** @var string */
+    private $hashedPassword;
+
     /** @var int|string */
     private $id;
 
     /** @var string */
     private $name;
 
-    /** @var string */
-    private $hashedPassword;
-
     /** @var int */
     private $validUntil;
+
+    /**
+     * @param string $name
+     */
+    public function setHashedName($name)
+    {
+        $this->hashedName = trim((string) $name);
+    }
+
+    /**
+     * @return string
+     */
+    public function getHashedName()
+    {
+        return $this->hashedName;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setHashedPassword($password)
+    {
+        $this->hashedPassword = trim((string) $password);
+    }
+
+    /**
+     * @return string
+     */
+    public function getHashedPassword()
+    {
+        return $this->hashedPassword;
+    }
 
     /**
      * @return bool
@@ -62,22 +97,6 @@ class Identity implements ArrayAbleInterface
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * @param string $password
-     */
-    public function setHashedPassword($password)
-    {
-        $this->hashedPassword = trim((string) $password);
-    }
-
-    /**
-     * @return string
-     */
-    public function getHashedPassword()
-    {
-        return $this->hashedPassword;
     }
 
     /**
