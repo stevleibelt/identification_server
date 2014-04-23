@@ -28,7 +28,7 @@ class IdentifyController extends AbstractController
             $query->setName($name);
             $query->setPassword($password);
 
-            $database = $this->getDatabase();
+            $database = $this->locator->getDatabase();
             $database->validateAuthorization($query);
             $response = $this->getResponse(array())->toArray();
         } catch (\InvalidArgumentException $exception) {

@@ -7,6 +7,7 @@
 namespace Service\Factory;
 
 use Database\FileDatabase;
+use Service\Locator;
 
 /**
  * Class FileDatabaseFactory
@@ -15,9 +16,10 @@ use Database\FileDatabase;
 class FileDatabaseFactory implements FactoryInterface
 {
     /**
+     * @param Locator $locator
      * @return \Database\DatabaseInterface
      */
-    public function create()
+    public function create(Locator $locator)
     {
         $pathToDatabase = realpath(__DIR__ . '/../../../data/dynamic/database.php');
         $data = (is_readable($pathToDatabase)) ? require_once $pathToDatabase : array();
@@ -25,7 +27,8 @@ class FileDatabaseFactory implements FactoryInterface
         $identityFactory = new IdentityFactory();
 
         $database = new FileDatabase($data);
-        $database->setHasher($hasherFactory->create());
+        $database->setLocator($locator);
+        $database->setHasher($hasherFactory->create($locator));
         $database->setIdentityFactory($identityFactory);
 
         return $database;

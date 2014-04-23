@@ -7,6 +7,7 @@
 namespace Service\Factory;
 
 use Model\Identity;
+use Service\Locator;
 
 /**
  * Class IdentityFactory
@@ -15,9 +16,10 @@ use Model\Identity;
 class IdentityFactory implements FactoryInterface
 {
     /**
+     * @param Locator $locator
      * @return Identity
      */
-    public function create()
+    public function create(Locator $locator)
     {
         return new Identity();
     }

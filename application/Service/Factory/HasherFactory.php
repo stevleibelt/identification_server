@@ -7,6 +7,7 @@
 namespace Service\Factory;
 
 use Model\Hasher;
+use Service\Locator;
 
 /**
  * Class HasherFactory
@@ -15,9 +16,10 @@ use Model\Hasher;
 class HasherFactory implements FactoryInterface
 {
     /**
+     * @param Locator $locator
      * @return \Model\Hasher
      */
-    public function create()
+    public function create(Locator $locator)
     {
         $pathToSalt = realpath(__DIR__ . '/../../../data/dynamic/salt.php');
         $salt = (is_readable($pathToSalt)) ? require_once $pathToSalt : 'demo';

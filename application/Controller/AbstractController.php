@@ -9,9 +9,8 @@ namespace Controller;
 use Model\Payload;
 use Model\Response;
 use Model\Status;
-use Database\DatabaseInterface;
 use Database\Query;
-use Service\Factory\FileDatabaseFactory;
+use Service\Locator;
 
 /**
  * Acts as application
@@ -20,20 +19,20 @@ use Service\Factory\FileDatabaseFactory;
  */
 abstract class AbstractController
 {
-    /** @var DatabaseInterface */
-    private $database;
+    /** @var Locator */
+    protected $locator;
+
+    public function __construct()
+    {
+        $this->locator = new Locator();
+    }
 
     /**
-     * @return DatabaseInterface
+     * @return Locator
      */
-    protected function getDatabase()
+    public function getLocator()
     {
-        if (!$this->database instanceof DatabaseInterface) {
-            $factory = new FileDatabaseFactory();
-            $this->database = $factory->create();
-        }
-
-        return $this->database;
+        return $this->locator;
     }
 
     /**

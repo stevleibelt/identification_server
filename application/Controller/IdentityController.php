@@ -41,7 +41,7 @@ class IdentityController extends AbstractController
             $query->setName($name);
             $query->setPassword($password);
 
-            $database = $this->getDatabase();
+            $database = $this->locator->getDatabase();
             $database->validateAuthorization($query);
             $identity = $database->getIdentity($query);
             if ($identity instanceof Identity) {
@@ -76,7 +76,7 @@ class IdentityController extends AbstractController
             $query->setName($name);
             $query->setPassword($password);
 
-            $database = $this->getDatabase();
+            $database = $this->locator->getDatabase();
 
             //@token -  check if no entry exists for this name
             //          create identity

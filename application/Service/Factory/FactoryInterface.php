@@ -6,6 +6,8 @@
 
 namespace Service\Factory;
 
+use Service\Locator;
+
 /**
  * Interface FactoryInterface
  * @package Service\Factory
@@ -13,7 +15,8 @@ namespace Service\Factory;
 interface FactoryInterface
 {
     /**
+     * @param Locator $locator
      * @return mixed
      */
-    public function create();
+    public function create(Locator $locator);
 } 

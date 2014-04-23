@@ -50,7 +50,7 @@ class FileDatabase extends AbstractDatabase
 
     private function createIdentity(array $values)
     {
-        $identity = $this->identityFactory->create();
+        $identity = $this->identityFactory->create($this->locator);
 
         $identity->setId($values['id']);
         $identity->setName($values['name']);

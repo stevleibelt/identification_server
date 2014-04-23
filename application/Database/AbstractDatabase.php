@@ -9,18 +9,31 @@ namespace Database;
 use Model\Hasher;
 use Model\Identity;
 use Service\Factory\IdentityFactory;
+use Service\Locator;
+use Service\LocatorDependentInterface;
 
 /**
  * Class AbstractDatabase
  * @package Database
  */
-abstract class AbstractDatabase implements DatabaseInterface
+abstract class AbstractDatabase implements DatabaseInterface, LocatorDependentInterface
 {
     /** @var Hasher */
     protected $hasher;
 
     /** @var IdentityFactory */
     protected $identityFactory;
+
+    /** @var Locator */
+    protected $locator;
+
+    /**
+     * @param Locator $locator
+     */
+    public function setLocator(Locator $locator)
+    {
+        $this->locator = $locator;
+    }
 
     /**
      * @param Query $query
